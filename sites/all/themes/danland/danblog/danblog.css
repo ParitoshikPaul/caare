@@ -1,0 +1,364 @@
+/* $Id: danblog.css,v 1.11.2.2 2010/11/19 14:42:44 danprobo Exp $ */
+
+body.html{
+  /*background: url('../images/house2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;*/
+}
+
+#layout-type-1{
+  margin-top: 30px;
+}
+
+#header{
+  background: url('../images/house_bg.jpg');
+  height: 186px;
+  width: 1000px;
+}
+
+.logo{
+  margin: 36px 0 0 45px;
+}
+
+.logo img{
+  height: auto;
+}
+
+#block-menu-menu-secondary-menu ul {
+  position: absolute;
+  right: 65px;
+  top: 5px;
+}
+
+#block-menu-menu-secondary-menu ul li{
+  float: left;
+  border-right: 1px solid #820024;
+  list-style-type: none;
+  list-style-image: none;
+  padding: 0 1.9em 0 1.7em;
+}
+
+#block-menu-menu-secondary-menu ul li a:link {
+  color: #820024;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#block-search-form{
+  clear: both;
+}
+
+form#search-block-form{
+  position: absolute;
+  right: -7px;
+  bottom: -97px;
+}
+
+form#search-block-form input#edit-submit,
+form#search-block-form input.form-text{
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #820024;
+  color: #820024;
+  font-size: 14px;
+}
+
+#header-wrapper #search-box{
+  position: relative;
+  right: 0;
+  top: 0;
+  float:right;
+}
+
+#menu{
+  width: 1000px;
+  background-color: #ffffff;
+  background-image: none;
+  height: 45px;
+}
+
+#rounded-menu-left,
+#rounded-menu-right{
+  background-image: none;
+}
+
+#superfish .menu a, #superfish .menu a:visited {
+  color: #820024;
+  font-family: Georgia,"Times New Roman",Times,serif !important;
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+#superfish .menu a:focus, #superfish .menu a:hover {
+  background: #11557;
+}
+#wrapper{
+  width: 1000px;
+  background: #ffffff;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+/* Put your custom css and css overrides in this file */
+
+body {
+  font-size: 84%;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#nav li a{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#superfish .menu a,
+#superfish .menu a:visited  {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+  color: #005a8c;/*#e87e17*/
+  text-decoration: none;
+}
+
+a:visited {
+  color: #005a8c;/*#e87e17*/
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-name a:hover {
+  text-decoration: none;
+}
+
+.comment .new {
+  text-align: right; /* LTR */
+  font-weight: bold;
+  float: right; /* LTR */
+  color: red;
+  margin:.5em;
+}
+
+.comment .title {
+  line-height: 1.2em;
+}
+
+.comment .title a:hover {
+  text-decoration: none;
+}
+
+#subnav li a {
+  font-weight:bold;
+}
+
+#subnav li a:hover {
+  text-decoration: underline;
+  color: #005a8c;/*#e87e17*/
+}
+
+.title {
+  line-height:1.2em;
+}
+
+.node .title a:hover {
+  text-decoration: none;
+}
+
+#aggregator h3 a:hover {
+  text-decoration: none;
+  color: #005a8c;/*#e87e17*/
+}
+
+#mission-wrapper {
+  width:950px;
+  margin:0 auto;
+}
+
+#mission {
+  font-size:1.4em;
+  display:block;
+  line-height:1.2em;
+  font-family:Georgia, "Bitstream Vera Serif", serif;
+  font-size: 20px;
+  font-style:italic;
+}
+
+#mission .contextual-links {
+  font-size: 13px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-style:normal;
+}
+
+#mission .block-title {
+  margin-top:20px;
+}
+
+#mission .region {
+  margin:20px 10px;
+}
+
+.item-list .pager li a:hover {
+  text-decoration:none;
+}
+
+/* Custom Overwrites by Nick*/
+
+#block-views-news-feed-block {
+  border: 2px solid #BBB;
+  padding: 10px;
+}
+
+#block-views-news-feed-block .block-title{
+  margin: 5px 5px 10px;
+  font-size: 1.3em;
+  color: #820024;
+}
+
+.content-middle .view-news-feed .view-content tr td{
+  border: none;
+}
+
+.one-sidebar #content{
+  margin-left: 10px;
+  width: 70% !important;
+}
+
+#layout-type-1 #sidebar-right{
+  margin-right: 10px;
+  /*width: 16% !important;*/
+}
+
+#sidebar-right h2.block-title,
+.node-type-us-states .block-block h2.block-title{
+  background: #ffffff;
+  color: #820024;
+  margin-top: 10px;
+}
+
+#sidebar-right .content{
+  background: #ffffff;
+}
+
+.sidebar .block,
+.node-type-us-states .block-block {
+  border: 2px solid #bbbbbb;
+}
+
+#superfish .menu li :hover{
+  background-color: #cccccc;
+}
+
+#superfish .menu li li {
+  background-color: #E8E8E6;
+}
+
+#superfish .sf-shadow ul {
+  background: none !important;
+}
+
+#views-ticker-scroller-horizontal-ticker a:link{
+  color: #820024;
+  font-weight: bold;
+}
+
+body{
+  font-family: Georgia,"Times New Roman",Times,serif;
+}
+
+ul.pager li.pager-current{
+  background-color: #ffffff;
+  color: #000000;
+}
+
+#content #page-title{
+  color: #820024;
+}
+
+#superfish .menu li:hover{
+  background: #cccccc;
+}
+
+#superfish .menu li li li {
+  background: #E8E8E6;
+}
+
+#superfish .menu li li:hover{
+  background: #cccccc;
+}
+
+#superfish .menu li li li:hover{
+  background: #cccccc;
+}
+
+#superfish .menu li.active-trail{
+  background: #ffffff;
+}
+
+#superfish .menu li.active-trail li {
+  background: #E8E8E6;
+}
+
+/*a:visited {
+    color: #820024;
+}*/
+
+a {
+  color: #337799;
+}
+
+h2{
+  font-size: 2em;
+  color: #820024;
+}
+
+h2 a{
+  color: #820024 !important;
+
+}
+
+#layout-type-2 #sidebar-left {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 16%;
+  font-size: 12.5px;
+}
+
+#layout-type-2 #sidebar-left .content {
+  background: #ffffff;
+}
+
+#layout-type-2 #sidebar-left h2.block-title {
+  background: #ffffff;
+  color: #820024;
+  margin-top: 10px;
+}
+
+#layout-type-2 #sidebar-right {
+  margin-right: 1%;
+  width: 16%;
+}
+
+.two-sidebars #content {
+  width: 64%;
+}
+
+#search-box a{
+  color: #820024 !important;
+  font-weight: bold;
+}
+
+.ticker a:visited{
+  color: #820024;
+  font-weight: bold;
+}

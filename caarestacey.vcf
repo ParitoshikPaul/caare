@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Pederson;Stacey
+FN:Stacey Pederson
+ORG:Consumer Advocates in American Real Estate
+TITLE:Treasurer
+TEL;WORK;VOICE:(612) 435-8515
+TEL;WORK;VOICE:(612) 549-4559 voicemail
+TEL;WORK;FAX:(952) 842-9961
+ADR;WORK:;;P.O. Box 1;Navarre;MN;55392;United States of America
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:P.O. Box 1=0D=0ANavarre, MN 55392=0D=0AUnited States of America
+URL;WORK:http://www.caare.org
+EMAIL;PREF;INTERNET:spederson@caare.org
+REV:20080617T161312Z
+END:VCARD

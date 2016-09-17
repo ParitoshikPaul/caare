@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Miller;Douglas;R.
+FN:Douglas R. Miller
+ORG:Consumer Advocates in American Real Estate
+TITLE:Executive Director
+TEL;WORK;VOICE:(612) 435-8515
+TEL;WORK;VOICE:(612) 549-4559 voicemail
+TEL;CELL;VOICE:(952) 210-1403
+TEL;WORK;FAX:(952) 842-9961
+ADR;WORK:;;P.O. Box 1;Navarre;MN;55392;United States of America
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:P.O. Box 1=0D=0ANavarre, MN 55392=0D=0AUnited States of America
+URL;WORK:http://www.caare.org
+EMAIL;PREF;INTERNET:dmiller@caare.org
+REV:20080616T153754Z
+END:VCARD

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Provides install, updated, and uninstall functions for happycaptcha.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function happycaptcha_uninstall() {
+  variable_del('happycaptcha_css_location');
+  variable_del('happycaptcha_challenge_fg');
+  variable_del('happycaptcha_challenge_bg');
+  variable_del('happycaptcha_timeout');
+}

@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @file
+ * Uses the HappyCaptcha web service to improve the CAPTCHA system.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function happycaptcha_help($path, $arg) {
+  $output = '';
+  switch ($path) {
+    case 'admin/modules#name':
+      $output .= t('HappyCaptcha');
+      break;
+
+    case 'admin/modules#description':
+    case 'admin/config/people/captcha/happycaptcha':
+      $output .= t('Uses the <a href="@url" target="_blank">HappyCaptcha</a> web service to improve the CAPTCHA system.', array('@url' => url('http://happycaptcha.com')));
+      break;
+
+    case 'admin/help#happycaptcha':
+      $output .= '<p>' .
+        t('Uses the HappyCaptcha web service to improve the CAPTCHA module. For more information on what HappyCaptcha is, visit <a href="@url" target="_blank">the official website</a>.', array('@url' => url('http://happycaptcha.com'))) .
+        '</p><h3>' .
+        t('Configuration') .
+        '</h3><p>' .
+        t('The settings associated with HappyCaptcha can be found in the <a href="@happycaptchatab">HappyCaptcha tab</a>, in the <a href="@captchasettings">CAPTCHA settings</a>.', array('@happycaptchatab' => url('admin/config/people/captcha/happycaptcha'), '@captchasettings' => url('admin/config/people'))) .
+        '</p>';
+      break;
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function happycaptcha_menu() {
+  $items = array();
+  $items['admin/config/people/captcha/happycaptcha'] = array(
+    'title' => 'HappyCaptcha',
+    'description' => 'Administer the HappyCaptcha web service.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('happycaptcha_admin_settings'),
+    'access arguments' => array('administer happycaptcha'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'happycaptcha.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function happycaptcha_permission() {
+  return array(
+    'administer happycaptcha' => array(
+      'title' => t('HappyCaptcha Administration'),
+      'description' => t('Administer HappyCaptcha settings'),
+    ),
+  );
+}
+
+/**
+ * Integrate HappyCaptcha with the base CAPTCHA module.
+ */
+function happycaptcha_captcha() {
+  $args = func_get_args();
+  $op = array_shift($args);
+  switch ($op) {
+    case 'list':
+      return array('HappyCaptcha');
+
+    case 'generate':
+      $captcha_type = array_shift($args);
+      $captcha = array();
+      if ($captcha_type == 'HappyCaptcha') {
+
+        // Check if HappyCaptcha is available and show Math if not.
+        $timeout = variable_get('happycaptcha_timeout', '5');
+        $response = drupal_http_request("http://www.happycaptcha.com/alive.php", array('timeout', $timeout));
+        if ($response->code != 200 || $response->data != 'iamalive') {
+          return captcha_captcha('generate', 'Math', $args);
+        }
+
+        // Retrieve configuration variables from database.
+        $happycaptcha_css_location = variable_get('happycaptcha_css_location', 'http://happycaptcha.com/css/happycaptcha.css');
+        $happycaptcha_challenge_fg = variable_get('happycaptcha_challenge_fg', 'FEFEFE');
+        $happycaptcha_challenge_bg = variable_get('happycaptcha_challenge_bg', 'B36347');
+
+        // Create the form. Captcha requires TRUE to be returned in solution.
+        $captcha['solution'] = TRUE;
+        $captcha['captcha_validate'] = 'happycaptcha_captcha_validation';
+        $challenge_fg = check_plain($happycaptcha_challenge_fg);
+        $challenge_bg = check_plain($happycaptcha_challenge_bg);
+        $random_num = rand();
+        $happycaptcha_url = "http://happycaptcha.com/happycaptcha.js.php?fg=$challenge_fg&bg=$challenge_bg&r=$random_num";
+        $happycaptcha_url = check_url($happycaptcha_url);
+        $html = "<script>document.write('<script type=\"text/javascript\" src=\"$happycaptcha_url\"></sc' + 'ript>');</script>";
+        drupal_add_css($happycaptcha_css_location, array('type' => 'external'));
+        $captcha['form']['captcha_response'] = array(
+          '#type' => 'hidden',
+          '#value' => 'HappyCaptcha',
+        );
+        $captcha['form']['captcha_form'] = array(
+          '#type' => 'item',
+          '#markup' => $html,
+        );
+      }
+      return $captcha;
+  }
+}
+
+/**
+ * CAPTCHA Callback; Validates the HappyCaptcha code.
+ */
+function happycaptcha_captcha_validation($solution = NULL, $response = NULL) {
+  $req = "?challengeid=" . urlencode($_POST["hc_challenge_id"]) . "&response=" . urlencode($_POST["hc_response_txt"]);
+  $verify_response = drupal_http_request("http://happycaptcha.com/verify.php" . $req);
+  return $verify_response->data == "PASS" ? TRUE : FALSE;
+}
